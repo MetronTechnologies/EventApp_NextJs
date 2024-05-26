@@ -91,7 +91,7 @@ export async function POST(req: Request) {
             photo: image_url,
         }
 
-        const updatedUser = await updateUser(id!, user)
+        const updatedUser = await updateUser(id, user)
 
         return NextResponse.json({ message: 'OK', user: updatedUser })
     }
