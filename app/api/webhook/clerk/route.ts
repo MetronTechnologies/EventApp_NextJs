@@ -3,7 +3,7 @@ import { headers } from 'next/headers';
 import {clerkClient, WebhookEvent} from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 import {createUser, deleteUser, updateUser} from "@/lib/actions/user.action";
-import {CreateUserParams} from "@/types";
+import {CreateUserParams, UpdateUserParams} from "@/types";
 
 export async function POST(req: Request) {
 
@@ -84,7 +84,7 @@ export async function POST(req: Request) {
     if (eventType === 'user.updated') {
         const {id, image_url, first_name, last_name, username } = evt.data
 
-        const user = {
+        const user = <UpdateUserParams>{
             firstName: first_name!,
             lastName: last_name!,
             username: username!,
