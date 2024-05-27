@@ -82,16 +82,24 @@ export async function POST(req: Request) {
     }
 
     if (eventType === 'user.updated') {
-        const {id, image_url, first_name, last_name, username } = evt.data
+        interface UpdateUser{
+            id: string | undefined;
+            image_url: string;
+            first_name: string;
+            last_name: string;
+            username: string;
+        }
+
+        const {id, image_url, first_name, last_name, username }: UpdateUser = evt.data
 
         const user = <UpdateUserParams>{
-            firstName: first_name!,
+            firstName: first_name,
             lastName: last_name!,
             username: username!,
             photo: image_url!,
         }
 
-        const updatedUser = await updateUser(id, user)
+        const updatedUser = await updateUser(id, user);
 
         return NextResponse.json({ message: 'OK', user: updatedUser })
     }
