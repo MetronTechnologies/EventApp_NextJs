@@ -81,17 +81,23 @@ export async function POST(req: Request) {
         })
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     if (eventType === 'user.updated') {
-        interface UpdateUser{
-            id: string | undefined;
-            image_url: string;
-            first_name: string;
-            last_name: string;
-            username: string;
-        }
         const {id, image_url, first_name, last_name, username } = evt.data
         const user = {
-            firstName: first_name,
+            firstName: first_name!,
             lastName: last_name!,
             username: username!,
             photo: image_url!,
