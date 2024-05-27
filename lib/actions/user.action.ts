@@ -34,7 +34,7 @@ export async function getUserById(userId: string) {
     }
 }
 
-export async function updateUser(clerkId: any, user) {
+export async function updateUser(clerkId: any, user: any) {
     try {
         await connectToDb();
         const updatedUser = await User

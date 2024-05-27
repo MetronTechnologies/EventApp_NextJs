@@ -89,10 +89,8 @@ export async function POST(req: Request) {
             last_name: string;
             username: string;
         }
-
         const {id, image_url, first_name, last_name, username } = evt.data
-
-        const user = <UpdateUserParams>{
+        const user = {
             firstName: first_name,
             lastName: last_name!,
             username: username!,
