@@ -36,7 +36,8 @@ export default clerkMiddleware({
         '/api/webhook/clerk',
         '/api/webhook/stripe',
         '/api/uploadthing'
-    ]
+    ],
+    debug: true
 });
 
 
