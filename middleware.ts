@@ -20,9 +20,11 @@
 
 
 
-import {authMiddleware} from "@clerk/nextjs/server";
+// noinspection TypeScriptValidateTypes
 
-export default authMiddleware({
+import { clerkMiddleware } from "@clerk/nextjs/server";
+
+export default clerkMiddleware({
     publicRoutes: [
         '/',
         '/events/:id',
@@ -37,8 +39,9 @@ export default authMiddleware({
     ]
 });
 
+
 export const config = {
-    matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+    matcher: ["/((?!.+.[w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };
 
 
