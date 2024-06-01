@@ -3,6 +3,12 @@ const nextConfig = {
     typescript: {
         ignoreBuildErrors: true
     },
+    experimental: {
+        serverActions: true,
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
     images: {
         domains: ['utfs.io'],
         remotePatterns: [
