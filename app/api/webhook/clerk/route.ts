@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 import {CreateUserParams} from "@/types";
 import {createUser, deleteUser} from "@/lib/actions/user.action";
 
-export async function POST(req: Request) {
+export const POST = async (req: Request) => {
 
     // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
     const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET
@@ -22,11 +22,11 @@ export async function POST(req: Request) {
     const svix_signature = headerPayload.get("svix-signature");
 
     // If there are no headers, error out
-    // if (!svix_id || !svix_timestamp || !svix_signature) {
-    //     return new Response('Error occured -- no svix headers', {
-    //         status: 400
-    //     })
-    // }
+    if (!svix_id || !svix_timestamp || !svix_signature) {
+        return new Response('Error occured -- no svix headers', {
+            status: 400
+        })
+    }
 
     // Get the body
     const payload = await req.json()
